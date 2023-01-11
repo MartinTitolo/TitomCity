@@ -187,8 +187,6 @@ function comprarProducto(product) {
     } else {
         productoEncontrado.cantidad++;
     }
-
-    console.log(carrito);
 }
 
 function borrarProducto(product) {
@@ -196,40 +194,43 @@ function borrarProducto(product) {
 }
 
 verCarrito.addEventListener("click", () => {
-
+    modalContainer.innerHTML = "";
+    modalContainer.style.display = "flex";
     const modalHeader = document.createElement("div");
     modalHeader.className = "modal-header"
+    modalHeader.innerHTML = `
+    <h1 class="modal-header-title">Carrito.</h1>
+    `;
     modalContainer.append(modalHeader);
     
-    const modalbutton = document.createElement("h1")
+    const modalbutton = document.createElement("h1");
     modalbutton.innerText = "x";
     modalbutton.className = "modal-header-button";
 
-    modalContainer.style.display = "flex"
-
-    modalbutton.addEventListener("click", () => {
+    modalbutton.addEventListener ("click", () => {
         modalContainer.style.display = "none";
-    })
+    });
 
     modalHeader.append(modalbutton);
 
 
     carrito.forEach((product) =>{
-        let carritoContent = document.createElement("div")
-        carrito.className = "modal-content"
-        carrito.innerHTML = `
-        <img src="${product.Img}">
-        <h3>${product.nombre}</h3>
-        <p>${product.precio} $</p>
-        `;
+        let carritoContent = document.createElement("div");
+        carritoContent.className = "modal-content";
+        carritoContent.innerHTML = `
+          <img src="${product.Img}">
+          <h3>${product.nombre}</h3>
+          <p>${product.precio} $</p>
+        `; 
+        
+        modalContainer.append(carritoContent) 
+    });
 
-        modalContainer.append(carritoContent);
-     });
-
-     const total = carrito.reduce((acc, el) => acc + el.precio, 0);
-
-     const totalBuying = document.createElement("div")
-     totalBuying.className = "total-content"
-     totalBuying.innerHTML = `total a pagar: ${total} $`;
-     modalContainer.append(totalBuying);
+    const total = carrito.reduce((acc, el) => acc + el.precio, 0);
+    
+    const totalBuying = document.createElement("div")
+    totalBuying.className = "total-content"
+    totalBuying.innerHTML = `total a pagar: ${total} $`;
+    modalContainer.append(totalBuying);
 });
+
