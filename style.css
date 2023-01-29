@@ -98,7 +98,6 @@ body{
 }
 .card button{
     border-radius: 10px 10px;
-    border-color: rgb(2, 61, 255);
     outline: 0;
     padding: 12px;
     background-color: #4400ff;
@@ -355,6 +354,7 @@ h2{
     display: flex;
     justify-content: space-around;
     background-color: #0a0909;
+    width: 100%;
 }
 .modal-header-title{
     justify-self: start;
@@ -380,4 +380,33 @@ h2{
     padding: 20px;
     text-align: center;
     padding-top: 20px;
+}
+
+.delete-product {
+    cursor: pointer;
+    color: red;
+}
+
+.delete-product :hover {
+    transform: scale(1.5s);
+}
+
+/*CarritoCounter*/
+.cantidadCarrito{
+    background-color: rgb(53, 51, 51);
+    color: white;
+    border-radius: 50%;
+    font-size: 15px;
+    top: 37px;
+    right: 14px;
+    position: absolute;
+    display: none;
+}
+
+.restar {
+    cursor: pointer;
+}
+
+.sumar {
+    cursor: pointer;
 }
